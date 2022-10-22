@@ -1,7 +1,7 @@
 import { Text, View, TouchableOpacity } from 'react-native';
 import styles from '../styles';
 
-function Home() {
+function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -9,6 +9,12 @@ function Home() {
           console.log('hi');
         }}>
         <Text>Home</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('Detail');
+        }}>
+        <Text>Go Detal</Text>
       </TouchableOpacity>
     </View>
   );
