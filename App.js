@@ -1,17 +1,20 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import Home from './components/Home';
-import Detail from './components/Detail';
+import { RecoilRoot } from 'recoil';
 const Stack = createNativeStackNavigator();
+
+import WebinarList from './components/WebinarList';
+import WebinarDetail from './components/WebinarDetail';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen name='Detail' component={Detail} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <RecoilRoot>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name='WebinarList' component={WebinarList} />
+          <Stack.Screen name='WebinarDetail' component={WebinarDetail} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </RecoilRoot>
   );
 }
