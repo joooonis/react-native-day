@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Text, View, TouchableOpacity, FlatList, Image } from 'react-native';
 import styles from '../styles';
+import { useRecoilValue } from 'recoil';
+import { appliedAtom } from '../recoilStates';
 
 import axios from 'axios';
 
@@ -8,6 +10,7 @@ const url = 'http://qa2.ringleserver.com/api/v4/student/landing/webinar';
 
 function WebinarList({ navigation }) {
   const [webinars, setWebinars] = useState([]);
+  const applied = useRecoilValue(appliedAtom);
 
   useEffect(() => {
     // http requset
@@ -33,7 +36,7 @@ function WebinarList({ navigation }) {
 
   const renderItem = ({ item }) => {
     return (
-      <View>
+      <View style={applied[item.id] ? styles.view1 : styles.view2}>
         <TouchableOpacity
           onPress={() =>
             navigation.navigate('WebinarDetail', { webinar: item })
